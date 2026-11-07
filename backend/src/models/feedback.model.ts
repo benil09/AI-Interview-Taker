@@ -8,7 +8,8 @@ const categorySchema = new mongoose.Schema({
     score: {
         type: Number,
         required: true
-    }, comment: {
+    },
+    feedback: {
         type: String,
         required: true
     }

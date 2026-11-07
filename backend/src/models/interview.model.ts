@@ -14,7 +14,7 @@ const interviewSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    techStack: {
+    techstack: {
         type: [String],
         required: true,
     },
