@@ -138,7 +138,10 @@ export async function listInterview(_req: Request, res: Response) {
     if (!(await checkDbConnection(res))) return;
     try {
         const interviews = await InterviewModel.find().sort({ createdAt: -1 }).lean();
-        return res.status(200).json({ success: true, data: await Promise.all(interviews.map(async (interview) => await toInterviewJSON(interview))) })
+        return res.status(200).json({
+            success: true,
+            data: await Promise.all(interviews.map(async (interview: any) => await toInterviewJSON(interview))),
+        });
     } catch (error) {
         console.error("Error listing interviews:", error);
         return res.status(500).json({
