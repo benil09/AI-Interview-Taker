@@ -57,20 +57,40 @@ export async function toInterviewJSON(doc: {
 export async function createInterview(req: Request, res: Response) {
     if (!(await checkDbConnection(res))) return;
     try {
-        const { role, level, techstack, type, amount } = req.body;
-        if (!role || !level || !techstack || !type || !amount) {
+        const role = String(req.body.role || "").trim();
+        const level = String(req.body.level || "Mid-level").trim();
+        const type = String(req.body.type || "Technical").trim();
+        const techstack = req.body.techstack;
+        const amount = Number(req.body.amount) || 5;
+
+        if (!role || !techstack) {
             return res.status(400).json({
                 success: false,
-                message: "Missing required fields: role, level, techstack, type, amount",
+                message: "Missing required fields: role and techstack are required",
             });
         }
+
         const techstackArray = Array.isArray(techstack)
             ? techstack
             : typeof techstack === "string"
                 ? techstack.split(",").map((tech) => tech.trim()).filter(Boolean)
                 : [];
 
-        const questions = await generateInterviewQuestions({ role, level, techstack, type, amount });// to be implemented . done ✅
+        if (techstackArray.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Please provide at least one technology in techstack",
+            });
+        }
+
+        const questions = await generateInterviewQuestions({
+            role,
+            level,
+            techstack: techstackArray.join(", "),
+            type,
+            amount,
+        });
+
         const interview = await InterviewModel.create({
             role,
             level,

@@ -51,12 +51,9 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-semibold text-primary mb-4">
-                <Sparkles className="h-3.5 w-3.5" />
-                <span>AI Mock Interview Platform</span>
-              </div>
+              
               <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl text-foreground">
-                Master Technical Interviews with Real-Time AI
+                Master Technical Interviews with Real-Time AI Voice Agent
               </h1>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                 Generate questions tailored to your exact tech stack, converse with an interactive voice assistant, and receive scored feedback across communication, technical depth, and problem solving.

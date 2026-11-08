@@ -75,8 +75,8 @@ export function InterviewCard({ interview }: { interview: Interview }) {
           className="inline-flex items-center justify-center gap-1 rounded-lg border border-border bg-background px-3 py-2 text-xs font-medium text-foreground hover:bg-muted active:scale-95 transition-all"
           title="View Score & Feedback"
         >
-          <Award className="h-3.5 w-3.5 text-muted-foreground" />
-          <span className="hidden sm:inline">Report</span>
+          {/* <Award className="h-3.5 w-3.5 text-muted-foreground" /> */}
+          <span className="hidden sm:inline">Results</span>
         </Link>
       </div>
     </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Mic, Sparkles } from "lucide-react";
+import { Mic, Sparkles, MicAudioLines } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar({ onOpenCreate }: { onOpenCreate?: () => void }) {
   return (
@@ -9,7 +10,7 @@ export function Navbar({ onOpenCreate }: { onOpenCreate?: () => void }) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md transition-transform group-hover:scale-105">
-            <Mic className="h-5 w-5" />
+            <MicAudioLines className="h-5 w-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -29,6 +30,8 @@ export function Navbar({ onOpenCreate }: { onOpenCreate?: () => void }) {
           >
             Dashboard
           </Link>
+
+          <ThemeToggle />
 
           {onOpenCreate && (
             <button
