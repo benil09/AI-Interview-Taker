@@ -74,26 +74,25 @@ export async function generateFeedbackFromTranscript(formattedTranscript: string
     const response = await ai.models.generateContent({
         model: GEMINI_LLM_MODEL,
         contents: `
-You are an AI interviewer analysing a mock interview.
+                    You are an AI interviewer analysing a mock interview.
 
-Score the candidate from 0 to 100 in each provided category.
-Do not add categories that are not listed.
+                    Score the candidate from 0 to 100 in each provided category.
+                    Do not add categories that are not listed.
 
-Transcript: ${formattedTranscript}
+                    Transcript: ${formattedTranscript}
 
-Categories:
-- Communication Skills: Clarity, articulation, and structured responses
-- Technical Knowledge: Understanding of key concepts for the role
-- Problem Solving: Breaking down complex problems and proposing solutions
-- Cultural Fit: How well the candidate fits the company culture
-- Confidence and Clarity: How confident and clear the candidate is
-`,
+                    Categories:
+                    - Communication Skills: Clarity, articulation, and structured responses
+                    - Technical Knowledge: Understanding of key concepts for the role
+                    - Problem Solving: Breaking down complex problems and proposing solutions
+                    - Cultural Fit: How well the candidate fits the company culture
+                    - Confidence and Clarity: How confident and clear the candidate is
+                    `,
         config: {
             systemInstruction: `
-You are a professional interviewer analysing a mock interview.
-Be thorough, detailed, and constructive.
-Do not be lenient. Clearly identify mistakes and areas for improvement.
-`,
+                    You are a professional interviewer analysing a mock interview.
+                    Be thorough, detailed, and constructive.
+                    Do not be lenient. Clearly identify mistakes and areas for improvement.`,
             responseMimeType: "application/json",
             responseJsonSchema: z.toJSONSchema(feedbackSchema),
         },

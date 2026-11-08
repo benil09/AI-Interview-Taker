@@ -30,7 +30,8 @@ const feedbackSchema = new mongoose.Schema({
     totalScore: {
         type: Number,
         required: true
-    }, categoryScore: {
+    }, 
+    categoryScore: {
         type: [categorySchema],
         required: true
     },

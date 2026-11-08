@@ -2,7 +2,7 @@ import { z } from "zod"
 
 
 
-const interviewSchema = z.object({
+export const interviewSchema = z.object({
         role:z.string().min(1),
         level:z.string(),
         techStack:z.array(z.string()).min(1),
@@ -11,8 +11,11 @@ const interviewSchema = z.object({
         
 })
 
-const updateInterviewSchema = z.object({
+export const updateInterviewSchema = z.object({
     role:z.string().min(1),
     level:z.string(),
     techStack:z.array(z.string()).min(1),
 })
+
+export type CreateInterviewDTO = z.infer<typeof interviewSchema>;
+export type UpdateInterviewDTO = z.infer<typeof updateInterviewSchema>;
